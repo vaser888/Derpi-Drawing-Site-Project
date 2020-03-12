@@ -15,6 +15,10 @@ var idValue;
 document.getElementById("upVotesNumber").addEventListener("input", (event) => { idValue = "upVotesNumber"; noLettersHere(idValue); });
 document.getElementById("downVotesNumber").addEventListener("input", (event) => { idValue = "downVotesNumber"; noLettersHere(idValue); });
 document.getElementById("scoreNumber").addEventListener("input", (event) => { idValue = "scoreNumber"; noLettersHere(idValue); });
+document.getElementById("timerHoursInput").addEventListener("input", (event) => { idValue = "timerHoursInput"; noLettersHere(idValue); });
+document.getElementById("timerMinutesInput").addEventListener("input", (event) => { idValue = "timerMinutesInput"; noLettersHere(idValue); });
+document.getElementById("timerSecondsInput").addEventListener("input", (event) => { idValue = "timerSecondsInput"; noLettersHere(idValue); });
+document.getElementById("timerNumTimes").addEventListener("input", (event) => { idValue = "timerNumTimes"; noLettersHere(idValue); });
 
 function noLettersHere(id) {
 	var numCheck = /[0-9]+$/;
