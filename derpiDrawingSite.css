@@ -80,16 +80,18 @@ button, select {
 	background-color: #dedede;
 	height: 100%;
 	overflow-y: auto;
-}
-
-.leftColumn div{
+	/* Center drawing area */
 	display: flex;
-	justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.leftColumn .drawingArea {
-	border: 1px solid #000;
-	margin: 4% 3%; 
+
+.drawingArea {
+	width: 500px;
+	height: 500px;
 }
 
 .rightColumn{
