@@ -112,14 +112,14 @@ var timerPause = 0;
 var loadTimerSetMemory;
 var loadTimerSetMemoryFlag = 0;
 var memoryPauseFlag = 1;
-var STOP = 1
+var STOP = 1;
 
 function startTimer() {
 
 	document.getElementById("pauseTimer").disabled = false;
 	document.getElementById("startTimer").innerHTML = "Start";
 	document.getElementById("startTimer").disabled = true;
-	STOP = 1
+	STOP = 1;
 	var startTime = Date.now(),
 		x = document.getElementById("timerNumTimes").value,
 		timerSet,
@@ -147,7 +147,7 @@ function startTimer() {
 		getImage();
 	}
 	timerPause = 0;
-	console.log("timer function starts")
+		//console.log("timer function starts")
 	timer();
 
 
@@ -173,6 +173,12 @@ function startTimer() {
 				alert("you are all done!");
 				x = 0;
 				document.getElementById("timerNumTimes").value = 0;
+				timerButtonsState(false, true, false);
+				timerPause = 0;
+				loadTimerSetMemoryFlag = 0;
+				memoryPauseFlag = 1;
+				timerCheckFlag = 0;
+				STOP = 0;
 				return;
 			}
 			getImage();
@@ -242,26 +248,23 @@ document.getElementById("stopTimer").addEventListener("click", function () {
 	timerPause = 0;
 	loadTimerSetMemoryFlag = 0;
 	memoryPauseFlag = 1;
-
-	document.getElementById("timerHoursInput").value = "00";
-	document.getElementById("timerMinutesInput").value = "00";
-	document.getElementById("timerSecondsInput").value = "00";
-
-	console.log(".");
+	setTimeout(setTimerToZeros, 1200);
+	function setTimerToZeros(){
+		document.getElementById("timerHoursInput").value = "00";
+		document.getElementById("timerMinutesInput").value = "00";
+		document.getElementById("timerSecondsInput").value = "00";
+	}
+	//console.log(".");
 	timerCheckFlag = 0;
 	STOP = 0;
 	return;
 });
-
-
 
 function timerButtonsState(start, pause, stop) {
 	document.getElementById("startTimer").disabled = start;
 	document.getElementById("pauseTimer").disabled = pause;
 	document.getElementById("stopTimer").disabled = stop;
 }
-
-
 
 /////////
 // Description: Code to get images and handle the filters 
