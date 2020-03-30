@@ -100,8 +100,8 @@ var timerCheckFlag = 0;
 
 function checkRunningTimer() {
 	if (timerCheckFlag != 1) {
-		startTimer();
 		timerCheckFlag = 1;
+		startTimer();
 	}
 	return;
 }
@@ -140,6 +140,7 @@ function startTimer() {
 		alert("Timer is set to 0h 0m 0s\n\nPlease input a time");
 		document.getElementById("startTimer").disabled = false;
 		document.getElementById("pauseTimer").disabled = true;
+		setTimerToDefault();
 		return;
 	}
 
@@ -199,6 +200,7 @@ function startTimer() {
 			document.getElementById("timerNumTimes").value = "0";
 			clearInterval(stopTimer);
 			alert("Oops. You managed to put a letter in the timer 'x' (times) area.\n\nSet a new number.");
+			setTimerToDefault();
 			return;
 		}
 		if (Number.isNaN(seconds) === true || Number.isNaN(minutes) === true || Number.isNaN(hours) === true) {
@@ -209,6 +211,7 @@ function startTimer() {
 			alert("Oops. You managed to put a letter in the timer.\n\nSet a new time.");
 			document.getElementById("startTimer").disabled = false;
 			document.getElementById("pauseTimer").disabled = true;
+			setTimerToDefault();
 			return;
 		}
 
@@ -221,6 +224,8 @@ function startTimer() {
 	};
 	return;
 }
+
+// Known bug => when pause timer is hit at 1 second and the time counts down to 0 it fires the done drawing code. when you press continue the timer is set at 0 causing you to have to manually reinput the number. 
 
 document.getElementById("pauseTimer").addEventListener("click", function () {
 	timerPause = 1;
@@ -240,6 +245,7 @@ document.getElementById("pauseTimer").addEventListener("click", function () {
 });
 
 document.getElementById("stopTimer").addEventListener("click", function () {
+
 	clearTimeout(stopTimer);
 
 	timerButtonsState(false, true, false);
@@ -264,6 +270,18 @@ function timerButtonsState(start, pause, stop) {
 	document.getElementById("startTimer").disabled = start;
 	document.getElementById("pauseTimer").disabled = pause;
 	document.getElementById("stopTimer").disabled = stop;
+}
+
+function setTimerToDefault(){
+	clearTimeout(stopTimer);
+	timerButtonsState(false, true, false);
+	timerPause = 0;
+	loadTimerSetMemoryFlag = 0;
+	memoryPauseFlag = 1;
+	timerCheckFlag = 0;
+	STOP = 0;
+	console.log(timerCheckFlag);
+	return;
 }
 
 /////////
