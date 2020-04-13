@@ -67,12 +67,28 @@ button, select {
 	width: 100%;
 }
 
-.drawingFunctions .functionsButtonOne{
+.drawingFunctions .functionsSaveButton{
 	display: flex;
 	justify-content: center;
-	margin: 14px;
+	margin: 14px 14px 0px 14px;
 }
 
+.drawingFunctions .colorHexValue{
+display: flex;
+justify-content: center;
+margin-top: 10px;
+}
+
+.drawingFunctions .colorBox{
+display:flex;
+justify-content: center;
+border: 1px solid black;
+width: 5vw;
+height: 5vw;
+margin: 0px auto;
+
+
+}
 
 .leftColumn{
 	float: left;
